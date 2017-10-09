@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheet/form.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>아이디 찾기 결과</title>
+  </head>
+
+  <body>
+    <h1>아이디 찾기 결과</h1>
+    <div class="form-page">
+      <div class="form">
+        <form action="/login" method="post" class="login-form">
+          <div class="id_length">아이디가 <%= rows.length %>개 존재합니다.</div></br></br>
+          <table class="resultid" width="90%" cellpadding="5" cellspacing="0" border="1" align="center" style="border-collapse:collapse; border:1px black solid;">
+          <% for (var i = 0; i < rows.length; i++) { %>
+              <tr>
+                <td style="border:1px black solid;"><%=i+1%></td>
+                <td style="border:1px black solid;"><%=rows[i].id%></td>
+              </tr></br>
+              <% } %>
+          </table>
+            <button>확인</button>
+            <p class="message"> <a href="/join">회원가입</a></p>
+            <p class="message"> <a href="/find_pw">비밀번호 찾기</a></p>
+          </form>
+        </div>
+      </div>
+  </body>
+</html>

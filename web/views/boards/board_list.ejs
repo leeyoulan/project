@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheet/list.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>글목록</title>
+  </head>
+  <body>
+    <h1>글목록</h1>
+    <section class="messages"> <%= message %> </section>
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+            <th>댓글</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i < rows.length; i++) { %>
+          <tr onclick="location.href='/board_view/<%=rows[i].post_num%>'">
+            <td><%=rows[i].post_num%></td>
+            <td><%=rows[i].post_title%></td>
+            <td><%=rows[i].post_id%></td>
+            <td><%=rows[i].post_time%></td>
+            <td><%=rows[i].post_hit%></td>
+            <td><%=rows[i].comm_count%></td>
+          </tr>
+          <% } %>
+        </tbody>
+        <div class="d0">
+          <div class="d1"><a href="/board_write" class="button">글쓰기</a></div>
+          <div class="d2"><a href="/logout" class="button">로그아웃</a></div>
+        </div>
+      </table>
+  </body>
+</html>
