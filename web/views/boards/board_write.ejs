@@ -17,15 +17,13 @@
 
   </head>
   <body>
-    <button onclick="popupOpen()">파일업로드</button>
     <h1>글쓰기</h1>
+    <div class="upbutton"><button onclick="popupOpen()">파일업로드</button></div>
     <form action="/board_write" method="post">
-
-  <input type="hidden" name="originalFileName" id="originalFileName" value="originalFileName"/>
-  <input type="hidden" name="savedFileName" id = "savedFileName" value="savedFileName"/>
-  <input type="hidden" name="fileSize" id="fileSize" value="fileSize"/>
-  <input type="hidden" name="filePath" id="filePath" value="filePath"/>
-
+      <input type="hidden" name="originalFileName" id="originalFileName" value="originalFileName"/>
+      <input type="hidden" name="savedFileName" id = "savedFileName" value="savedFileName"/>
+      <input type="hidden" name="fileSize" id="fileSize" value="fileSize"/>
+      <input type="hidden" name="filePath" id="filePath" value="filePath"/>
       <table border="1">
           <tr>
               <td>제목</td>

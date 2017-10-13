@@ -30,10 +30,12 @@
           <td class="td3"><%=rows[0].post_hit%></td>
         </tr>
         <tr class="tr3">
-          <td colspan="6">
+          <td class="td5" colspan="6">
+            <div class="downfile">
             <% if(rows[0].savedFileName){ %>
-            파일업로드  <a href="/download/<%=rows[0].savedFileName%>"><%=rows[0].originalFileName%></a></br>
+              [첨부파일]  <a href="/download/<%=rows[0].savedFileName%>"><%=rows[0].originalFileName%></a>
             <% } %>
+            </div></br>
             <%=rows[0].post_content%>
           </td>
         </tr>

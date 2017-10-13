@@ -125,6 +125,9 @@ h1, h3 {
 .td4{
 	border-bottom: 1px solid #f2f2f2;
 }
+.td5 {
+	padding-bottom: 40px;
+}
 
 .comm{
  	background-color: #e8e8e8;
@@ -154,6 +157,10 @@ h1, h3 {
 	font-size: 12px;
 }
 
+.downfile {
+	float: right;
+}
+
 .button {
     background-color: #ffffff;
     border: 1px solid black;
@@ -169,4 +176,9 @@ h1, h3 {
 
 .button:hover{
 	background: #e8e8e8;
+}
+
+.upbutton {
+	margin-left: 15%;
+	float: left;
 }
