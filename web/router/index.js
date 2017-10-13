@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var path = require('path');
 
 var join = require('./join/join')
 var login = require('./login/login')
@@ -16,6 +15,8 @@ var comm_delete = require('./comments/comm_delete')
 var find_id = require('./find/find_id')
 var find_pw = require('./find/find_pw')
 var re_pw = require('./find/re_pw')
+var upload = require('./upload/upload')
+var download = require('./download/download')
 
 router.use('/join',join);
 router.use('/login',login);
@@ -30,5 +31,7 @@ router.use('/comm_delete',comm_delete);
 router.use('/find_id',find_id);
 router.use('/find_pw',find_pw);
 router.use('/re_pw',re_pw);
+router.use('/upload',upload);
+router.use('/download',download);
 
 module.exports = router;
