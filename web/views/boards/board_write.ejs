@@ -6,26 +6,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>글쓰기</title>
-
-    <script type="text/javascript" language="javascript">
-      function popupOpen(){
-        var popUrl = "upload";
-        var popOption ="width=370, height=360, resizable=no, scrollbars=no, status=no;";
-        window.open(popUrl,"",popOption);
-      }
-    </script>
-
   </head>
   <body>
-    <button onclick="popupOpen()">파일업로드</button>
     <h1>글쓰기</h1>
     <form action="/board_write" method="post">
-
-  <input type="hidden" name="originalFileName" id="originalFileName" value="originalFileName"/>
-  <input type="hidden" name="savedFileName" id = "savedFileName" value="savedFileName"/>
-  <input type="hidden" name="fileSize" id="fileSize" value="fileSize"/>
-  <input type="hidden" name="filePath" id="filePath" value="filePath"/>
-
       <table border="1">
           <tr>
               <td>제목</td>

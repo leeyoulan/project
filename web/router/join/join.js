@@ -18,7 +18,7 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-//done:비동기동작
+//router ,, done:비동기동작
 router.get('/',function(req,res){
   var msg;
   var errMsg = req.flash('error');
