@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheet/form.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>아이디 찾기</title>
+  </head>
+
+  <body>
+    <h1>아이디 찾기</h1>
+    <div class="form-page">
+      <div class="form">
+        <section class="messages"> <%= message %> </section>
+          <form action="/find_id" method="post" class="login-form">
+            <input type="text"  placeholder="name" name="name"><br>
+            <input type="text"  placeholder="email" name="email"><br>
+            <button>확인</button>
+            <p class="message"> <a href="/join">회원가입</a></p>
+            <p class="message"> <a href="/find_pw">비밀번호 찾기</a></p>
+          </form>
+        </div>
+      </div>
+  </body>
+</html>

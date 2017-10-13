@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheet/boards.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>글상세</title>
+  </head>
+  <body>
+    <h1>글상세</h1>
+    <section class="messages"> <%= message %> </section>
+    <form action="/board_view" method="post">
+      <input type="hidden" name="post_num" value="<%=rows[0].post_num%>"/>
+      <div class="d3">
+        <a href="/board_update/<%=rows[0].post_num%>" class="button">글수정</a>
+        <a href="/board_delete/<%=rows[0].post_num%>" class="button">글삭제</a>
+        <a href="/board_list" class="button">리스트로 돌아가기</a>
+      </div>
+      <table>
+        <tr>
+          <td class="td1"colspan="6" ><%=rows[0].post_title%></td>
+        </tr>
+        <tr class="tr2">
+          <td class="td2">작성자</td>
+          <td class="td3"><%=rows[0].post_id%></td>
+          <td class="td2">작성일</td>
+          <td class="td3"><%=rows[0].post_time%></td>
+          <td class="td2">조회수</td>
+          <td class="td3"><%=rows[0].post_hit%></td>
+        </tr>
+        <tr class="tr3">
+          <td colspan="6">
+            <% if(rows[0].savedFileName){ %>
+            파일업로드  <a href="/download/<%=rows[0].savedFileName%>"><%=rows[0].originalFileName%></a></br>
+            <% } %>
+            <%=rows[0].post_content%>
+          </td>
+        </tr>
+
+        <% if(rows[0].comm_count>0){ %>
+        <tr class="comm">
+          <td colspan="6">댓글[<%=rows[0].comm_count%>]</td>
+        </tr>
+
+        <% for (var i = 0; i < rows.length; i++) { %>
+        <tr>
+          <td class="td4" colspan="6">
+            <%=rows[i].comm_id%> <%=rows[i].comm_time%>
+            <div class="comm3">
+              <a href="/comm_update/<%=rows[0].post_num%>/<%=rows[i].comm_num%>" class="button">수정</a>
+              <a href="/comm_delete/<%=rows[0].post_num%>/<%=rows[i].comm_num%>" class="button">삭제</a>
+            </div></br>
+            <%=rows[i].comm_content%>
+          </td>
+        </tr>
+        <% } %>
+
+        <% } else { %>
+          <tr class="comm">
+            <td colspan="2">댓글[0]</td>
+          </tr>
+        <% } %>
+
+        <tr>
+          <td colspan="6">
+            <div class="comm0">
+              <div class="comm1"><textarea name="comm_content" cols="100" rows="4"></textarea></div>
+              <div class="comm2"><input type="submit" class="button" value="등록"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
