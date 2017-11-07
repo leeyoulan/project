@@ -13,8 +13,8 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-router.get('/',function(req,res){
-  res.render('boards/board_write');
+router.get('/',LoggedIn,function(req,res){
+  res.render('boards/board_write',{'userId':req.user});
 })
 
 router.post('/', function(req,res){
@@ -26,7 +26,7 @@ router.post('/', function(req,res){
   var fileSize = req.body.fileSize;
   var filePath = req.body.filePath;
 
-  if (savedFileName!=='savedFileName') {
+  if (savedFileName) {
 
     var sql = 'insert into board (post_id, post_title, post_content, originalFileName, savedFileName, fileSize, filePath) values (?,?,?,?,?,?,?)';
 
@@ -50,5 +50,12 @@ router.post('/', function(req,res){
   }
 });
 
+function LoggedIn(req, res, next) {
+  if (req.isAuthenticated()){
+    next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 module.exports = router;

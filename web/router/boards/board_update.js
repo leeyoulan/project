@@ -22,37 +22,44 @@ router.get('/:post_num',function(req,res){
         res.status(500).send('Something broke!');
         console.log(err.code);
       }else{
-        if(req.user===rows[0].post_id){
-          res.render('boards/board_update.ejs',{rows:rows});
-        }else {
-          var sql = 'select post_num, post_id, post_title, post_content, date_format(post_time,"%Y/%c/%e") post_time, post_hit,\
-                    (select count(comm_num) from comment c where b.post_num=c.post_num) comm_count from board b;'
-            connection.query(sql,function(err,rows){
-              if (err) {
-                res.status(500).send('Something broke!');
-                console.log(err.code);
-              }
-            res.render('boards/board_list.ejs',{rows:rows,'message':'작성하신 글만 수정하실 수 있습니다.'})
-        })
-      }
-    }
+          res.render('boards/board_update.ejs',{rows:rows,'userId':req.user});
+        }
   })
 })
 
-
-router.post('/',function(req,res){
-  var post_num= req.body.post_num;
+router.post('/', function(req,res){
+  var post_id = req.user;
+  var post_num = req.body.post_num;
   var post_title = req.body.post_title;
   var post_content = req.body.post_content;
+  var originalFileName = req.body.originalFileName;
+  var savedFileName = req.body.savedFileName;
+  var fileSize = req.body.fileSize;
+  var filePath = req.body.filePath;
 
-  var sql = 'update board set post_title = ?, post_content = ? WHERE post_num = ?';
-    connection.query(sql,[post_title, post_content, post_num], function(err,rows){
-      if (err) {
+  if (savedFileName) {
+
+    var sql = 'update board set  post_title = ?, post_content = ?, originalFileName = ?,  savedFileName = ?, fileSize = ?, filePath = ? where post_num=?';
+
+    connection.query(sql,[post_title, post_content, originalFileName, savedFileName, fileSize, filePath, post_num],function(err,rows){
+      if(err){
         res.status(500).send('Something broke!');
         console.log(err.code);
       }
-    res.redirect('/board_view/'+post_num);
+      res.redirect('/board_view/'+post_num);
+    });
+  } else {
+    var sql = 'update board set post_title = ?, post_content = ? where post_num = ?';
+
+    connection.query(sql,[post_title, post_content, post_num],function(err,rows){
+      if(err){
+        res.status(500).send('Something broke!');
+        console.log(err.code);
+      }
+      res.redirect('/board_view/'+post_num);
     })
+  }
 });
+
 
 module.exports = router;

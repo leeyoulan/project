@@ -23,7 +23,7 @@ var upload = multer({
   });
 
 router.get('/', function(req, res){
-  res.render('upload');
+  res.render('upload/upload.ejs');
 });
 
 router.post('/', upload.single('userfile'),function(req, res){

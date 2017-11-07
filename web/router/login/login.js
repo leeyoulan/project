@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
-var path = require('path');
 var mysql = require('mysql');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -27,7 +26,7 @@ router.get('/',function(req,res){
   if(errMsg=='Missing credentials'){
     msg='아이디와 비밀번호를 입력해주세요';
   }
-  res.render('login.ejs',{'message': msg});
+  res.render('login/login.ejs',{'message': msg});
 });
 
 
@@ -36,6 +35,7 @@ passport.serializeUser(function(user,done){
   console.log('passport session save :',user.id);
   done(null,user.id);
 })
+
 //4
 passport.deserializeUser(function(id,done){
   console.log('passport session get id');
@@ -60,15 +60,15 @@ passport.use('local-login',new LocalStrategy({
         }
       })
     } else {
-      console.log('not existed user');
       return done(null,false,{'message': '존재하지 않는 사용자 입니다.'});
     }
   })
 }
 ));
 
+//2
 router.post('/',passport.authenticate('local-login',{
-  successRedirect : '/board_list',
+  successRedirect : '/main',
   failureRedirect : '/login',
   failureFlash : true
 }))

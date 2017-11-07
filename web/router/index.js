@@ -15,8 +15,11 @@ var comm_delete = require('./comments/comm_delete')
 var find_id = require('./find/find_id')
 var find_pw = require('./find/find_pw')
 var re_pw = require('./find/re_pw')
+var main = require('./main/main')
 var upload = require('./upload/upload')
+var uploadUpdate = require('./upload/uploadUpdate')
 var download = require('./download/download')
+var board_search = require('./boards/board_search')
 
 router.use('/join',join);
 router.use('/login',login);
@@ -31,7 +34,10 @@ router.use('/comm_delete',comm_delete);
 router.use('/find_id',find_id);
 router.use('/find_pw',find_pw);
 router.use('/re_pw',re_pw);
+router.use('/main',main);
 router.use('/upload',upload);
+router.use('/uploadUpdate',uploadUpdate);
 router.use('/download',download);
+router.use('/board_search',board_search);
 
 module.exports = router;
