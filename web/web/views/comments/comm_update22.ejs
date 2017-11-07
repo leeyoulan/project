@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/stylesheet/boards.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>댓글수정</title>
+  </head>
+  <body>
+    <h1>댓글수정</h1>
+    <form action="/comm_update" method="post">
+      <table>
+        <input type="hidden" name="post_num" value="<%=rows[0].post_num%>"/>
+        <input type="hidden" name="comm_num" value="<%=rows[0].comm_num%>"/>
+          <tr>
+              <td>내용</td>
+              <td><textarea name="comm_content" cols="90" rows="4"><%=rows[0].comm_content%></textarea></td>
+          </tr>
+          <div class="d4">
+            <div class="d5"><button type="submit" class="button">댓글수정</button></div>
+            <a href="/board_view/<%=rows[0].post_num%>" class="button">본문으로 돌아가기</a>
+          </div>
+      </table>
+    </form>
+  </body>
+</html>
