@@ -6,14 +6,14 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
 var bcrypt = require('bcrypt-nodejs');
+var dbconfig = require('./dbconfig.json');
 
-//database setting
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  port     : 3306,
-  user     : 'root',
-  password : '111111',
-  database : 'p1'
+  host     : dbconfig.host,
+  port     : dbconfig.port,
+  user     : dbconfig.user,
+  password : dbconfig.password,
+  database : dbconfig.database
 });
 
 connection.connect();

@@ -2,28 +2,14 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var mysql = require('mysql');
+var dbconfig = require('./dbconfig.json');
 
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  port     : 3306,
-  user     : 'root',
-  password : '111111',
-  database : 'p1'
-});
-
-connection.connect();
-
-var express = require('express');
-var app = express();
-var router = express.Router();
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  port     : 3306,
-  user     : 'root',
-  password : '111111',
-  database : 'p1'
+  host     : dbconfig.host,
+  port     : dbconfig.port,
+  user     : dbconfig.user,
+  password : dbconfig.password,
+  database : dbconfig.database
 });
 
 connection.connect();
@@ -41,6 +27,5 @@ router.get('/:post_num',function(req,res){
     })
 
 })
-
 
 module.exports = router;

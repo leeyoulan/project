@@ -2,13 +2,14 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 var mysql = require('mysql');
+var dbconfig = require('./dbconfig.json');
 
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  port     : 3306,
-  user     : 'root',
-  password : '111111',
-  database : 'p1'
+  host     : dbconfig.host,
+  port     : dbconfig.port,
+  user     : dbconfig.user,
+  password : dbconfig.password,
+  database : dbconfig.database
 });
 
 connection.connect();
@@ -27,9 +28,9 @@ router.get('/', function(req,res){
       res.render('boards/board_search.ejs',{'userId':req.user})
     }
     else {
-      res.render('boards/board_list.ejs',{rows:rows,'userId':req.user});
+      res.render('boards/board_list.ejs',{rows:rows,'userId':req.user})
     }
   })
-});
+})
 
 module.exports = router;
