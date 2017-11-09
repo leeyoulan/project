@@ -55,6 +55,25 @@ textarea {
     margin-top:-35px;
 }
 
+.chat_log{
+   width: 85%;
+   height: 250px;
+ }
+
+.name{
+   width: 8%;
+ }
+
+.message{
+   width: 70%;
+ }
+
+.chat{
+   width: 6.5%;
+   padding: 1.5px;
+   font-size: 15px;
+ }
+
 
 @media (min-width: 765px) {
 
