@@ -43,8 +43,7 @@ app.use(flash());
 
 var router = require('./router/index');
 
-var port = process.env.PORT || 50005;
-app.listen(port, function(){
+app.listen(50005,function(){
   console.log('start! port 50005');
 });
 
